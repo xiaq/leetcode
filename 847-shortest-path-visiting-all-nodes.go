@@ -29,6 +29,9 @@ func shortestPathLength(graph [][]int) int {
             }
         }
         for t := 0; t < 2; t++ {
+            // In the firt iteration, try all unvisited nodes.
+            // In the second iteration, try all visited nodes.
+            // This tends to find short paths faster.
             wantVisited := t == 1
             for j := 0; j < len(graph[v]); j++ {
                 if taken[v][j] || visited[graph[v][j]] != wantVisited {

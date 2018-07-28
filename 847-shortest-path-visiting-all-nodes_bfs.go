@@ -3,14 +3,12 @@ func shortestPathLength(graph [][]int) int {
     if n == 1 {
         return 0
     }
-
-    seen := make(map[int]bool)
-
     allVisited := (1 << uint(n)) - 1
 
     // Low 16 bits: bitmask for visited nodes
     // High 16 bits: current node
     q := make([]int, n)
+    seen := make(map[int]bool)
     for i := 0; i < n; i++ {
         q[i] = (1 << uint(i)) | (i << 16)
         seen[q[i]] = true
